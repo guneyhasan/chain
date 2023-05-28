@@ -1,13 +1,13 @@
 public class MLLNode {
-    private int chainElement;
+    private char chainElement;
     private MLLNode down;
     private MLLNode right;
 
-    public int getChainElement() {
+    public char getChainElement() {
         return chainElement;
     }
 
-    public void setChainElement(int chainElement) {
+    public void setChainElement(char chainElement) {
         this.chainElement = chainElement;
     }
 
@@ -27,7 +27,7 @@ public class MLLNode {
         this.right = right;
     }
 
-    public MLLNode(int chainToAdd) {
+    public MLLNode(char chainToAdd) {
         chainElement = chainToAdd;
         down = null;
         right = null;

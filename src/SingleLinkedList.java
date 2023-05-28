@@ -5,7 +5,7 @@ public class SingleLinkedList {
         return head;
     }
 
-    public void add(Object dataToAdd){
+    public void add(char dataToAdd){
         if(head == null){
             SLLNode newnode = new SLLNode(dataToAdd);
             head = newnode;

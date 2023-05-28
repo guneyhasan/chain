@@ -5,14 +5,12 @@ public class MultiLinkedList {
     }
     public void addChain(SingleLinkedList chainToAdd){
         if(head == null){
-            String forCasting=chainToAdd.getHead().getData().toString();
-            MLLNode newNode = new MLLNode(Integer.parseInt(forCasting));
+            MLLNode newNode = new MLLNode(chainToAdd.getHead().getData());
             head = newNode;
             MLLNode temp = head;
             SLLNode SLLtemp = chainToAdd.getHead().getLink();
             while(SLLtemp != null) {
-                String SLLtempForCasting=SLLtemp.getData().toString();
-                newNode = new MLLNode(Integer.parseInt(SLLtempForCasting));
+                newNode = new MLLNode(SLLtemp.getData());
                 while (temp.getRight() != null)
                     temp = temp.getRight();
                 temp.setRight(newNode);
@@ -23,15 +21,11 @@ public class MultiLinkedList {
             MLLNode temp = head;
             while (temp.getDown() != null)
                 temp = temp.getDown();
-
-            String newNODEforCasting=chainToAdd.getHead().getData().toString();
-            MLLNode newNode = new MLLNode(Integer.parseInt(newNODEforCasting));
-            temp.setDown(newNode);
-            temp = temp.getDown();
+            MLLNode newNode = new MLLNode(chainToAdd.getHead().getData());
+            temp.setDown(newNode); temp = temp.getDown();
             SLLNode SLLtemp = chainToAdd.getHead().getLink();
             while(SLLtemp != null) {
-                String SLLTEMPforCastinG=SLLtemp.getData().toString();
-                newNode = new MLLNode(Integer.parseInt(SLLTEMPforCastinG));
+                newNode = new MLLNode(SLLtemp.getData());
                 while (temp.getRight() != null)
                     temp = temp.getRight();
                 temp.setRight(newNode);
@@ -39,28 +33,31 @@ public class MultiLinkedList {
             }
         }
     }
-    public String display(){
-        String output = "";
+    public void display(enigma.console.Console console){
         if (head != null){
             MLLNode temp = head;
+            int tempWhileCounter=0;
             while (temp != null){
+                console.getTextWindow().setCursorPosition(38,9+tempWhileCounter);
                 MLLNode temp2 = temp;
-                while(temp2.getRight() != null) {
-                    output += temp2.getChainElement() + " + ";
+                int temp2WhileCounter=1;
+                while(temp2.getRight() != null){
+                    console.getTextWindow().output( temp2.getChainElement()+" + ");
+                    console.getTextWindow().setCursorPosition(38+temp2WhileCounter+3,9+tempWhileCounter);
                     temp2 = temp2.getRight();
+                    temp2WhileCounter+=4;
                 }
-                if(temp.getDown() != null)
-                    output += temp2.getChainElement() + "\n+\n";
-                else
-                    output += temp2.getChainElement();
+                console.getTextWindow().setCursorPosition(38+temp2WhileCounter-1,9+tempWhileCounter);
+                console.getTextWindow().output(temp2.getChainElement());
+
+                if(temp.getDown() != null) {
+
+                    console.getTextWindow().setCursorPosition(38,9 + tempWhileCounter + 1);
+                    console.getTextWindow().output('+');
+                }
                 temp = temp.getDown();
+                tempWhileCounter+=2;
             }
         }
-        return output;
     }
-
-    public MLLNode getHead(){
-        return head;
-    }
-    //public int size(){}
 }

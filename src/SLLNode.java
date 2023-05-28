@@ -1,11 +1,11 @@
 public class SLLNode {
-    private Object data;
+    private char data;
     private SLLNode link;
-    public Object getData() {
+    public char getData() {
         return data;
     }
 
-    public void setData(Object data) {
+    public void setData(char data) {
         this.data = data;
     }
 
@@ -17,7 +17,7 @@ public class SLLNode {
         this.link = link;
     }
 
-    public SLLNode(Object dataToAdd) {
+    public SLLNode(char dataToAdd) {
         data = dataToAdd;
         link = null;
     }
